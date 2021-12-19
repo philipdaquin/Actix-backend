@@ -22,3 +22,15 @@ pub struct ToDoList {
     pub id: i32, 
     pub title: String
 }
+
+#[derive(Deserialize)]
+pub struct CreateToDoList { 
+    pub id: i32, 
+    pub title: String, 
+    pub checked: bool,
+    pub list_id: i32
+}
+#[derive(Serialize)]
+pub struct ResultResponse { 
+    pub sucess: bool
+}
