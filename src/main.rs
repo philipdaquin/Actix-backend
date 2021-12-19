@@ -8,7 +8,7 @@ mod config;
 use crate::config::Config;
 
 mod db;
-use crate::db::*;
+//use //crate::db::*;
 
 use dotenv::dotenv;
 use tokio_postgres::NoTls;
@@ -30,6 +30,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
         .data(pool.clone())
         .route("/", web::get().to(status))
+        .route("/todos{_:/?}", web::get().to(get_todos))
     })
     .bind(format!("{}:{}", config.server.host, config.server.host))?
     .run()
